@@ -30,7 +30,10 @@ model_wrapper = HuggingFaceModelWrapper(model, tokenizer)
 # attack = Attack(goal_function, constraints, transformation, search_method)
 # print(attack)
 from textattack.attack_recipes import LSHWithAttentionWordNet
-attack = LSHWithAttentionWordNet.build(model_wrapper)
+attack = LSHWithAttentionWordNet.build(
+    model_wrapper,
+    attention_model='attention_models/yelp/han_model_yelp'
+)
 # print(attack)
 
 # Start Attack
