@@ -20,7 +20,7 @@ from textattack.constraints.semantics.sentence_encoders import UniversalSentence
 from textattack.transformations import WordSwapHowNet
 from textattack.goal_functions import UntargetedClassification
 from textattack.search_methods import GreedyWordSwapWIR
-from textattack.shared.attack import Attack
+from textattack import Attack
 from textattack.transformations import WordSwapWordNet
 from textattack.transformations import WordSwapEmbedding
 from textattack.constraints.semantics import WordEmbeddingDistance
