@@ -29,8 +29,8 @@ model_wrapper = HuggingFaceModelWrapper(model, tokenizer)
 # # Now, let's make the attack from the 4 components:
 # attack = Attack(goal_function, constraints, transformation, search_method)
 # print(attack)
-from textattack.attack_recipes import PWWSRen2019
-attack = PWWSRen2019.build(model_wrapper)
+from textattack.attack_recipes import TextFoolerJin2019
+attack = TextFoolerJin2019.build(model_wrapper)
 # print(attack)
 
 # Start Attack
