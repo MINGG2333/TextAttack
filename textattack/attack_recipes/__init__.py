@@ -39,3 +39,8 @@ from .pruthi_2019 import Pruthi2019
 from .pso_zang_2020 import PSOZang2020
 from .checklist_ribeiro_2020 import CheckList2020
 from .clare_li_2020 import CLARE2020
+# from .hard_label_maheshwary_2021 import HardLabelMaheshwary2021
+from .lsh_with_attention_maheshwary_2021 import LSHWithAttentionWordNet
+from .lsh_with_attention_maheshwary_2021 import LSHWithAttentionHowNet
+from .lsh_with_attention_maheshwary_2021 import LSHWithAttentionEmbedding
+from .lsh_with_attention_maheshwary_2021 import LSHWithAttentionEmbeddingGen

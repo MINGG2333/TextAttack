@@ -33,6 +33,7 @@ from . import (
     search_methods,
     shared,
     transformations,
+    attention_models,
 )
 
 

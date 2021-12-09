@@ -36,6 +36,11 @@ ATTACK_RECIPE_NAMES = {
     "checklist": "textattack.attack_recipes.CheckList2020",
     "clare": "textattack.attack_recipes.CLARE2020",
     "a2t": "textattack.attack_recipes.A2TYoo2021",
+    "hard-label-attack": "textattack.attack_recipes.HardLabelMaheshwary2021",
+    "lsh-with-attention-wordnet":"textattack.attack_recipes.LSHWithAttentionWordNet",
+    "lsh-with-attention-hownet":"textattack.attack_recipes.LSHWithAttentionHowNet",
+    "lsh-with-attention-embedding":"textattack.attack_recipes.LSHWithAttentionEmbedding",
+    "lsh-with-attention-embedding-no-POS":"textattack.attack_recipes.LSHWithAttentionEmbeddingGen"
 }
 
 
@@ -553,6 +558,12 @@ class _CommandLineAttackArgs:
             help="The batch size for making calls to the model.",
         )
         parser.add_argument(
+            "--attention-model",
+            default=None,
+            type=str,
+            help="Specify attention model to rank words",
+        )
+        parser.add_argument(
             "--model-cache-size",
             type=int,
             default=default_obj.model_cache_size,
@@ -671,9 +682,14 @@ class _CommandLineAttackArgs:
                     f"{ATTACK_RECIPE_NAMES[recipe_name]}.build(model_wrapper, {params})"
                 )
             elif args.attack_recipe in ATTACK_RECIPE_NAMES:
-                recipe = eval(
-                    f"{ATTACK_RECIPE_NAMES[args.attack_recipe]}.build(model_wrapper)"
-                )
+                if args.attention_model is None:
+                    recipe = eval(
+                        f"{ATTACK_RECIPE_NAMES[args.attack_recipe]}.build(model_wrapper)"
+                    )
+                else:
+                    recipe = eval(
+                        f"{ATTACK_RECIPE_NAMES[args.attack_recipe]}.build(model_wrapper, args.attention_model)"
+                    )
             else:
                 raise ValueError(f"Invalid recipe {args.attack_recipe}")
             if args.query_budget:

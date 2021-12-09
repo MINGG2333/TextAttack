@@ -19,7 +19,7 @@
 </p>
 
 <img src="http://jackxmorris.com/files/textattack.gif" alt="TextAttack Demo GIF" style="display: block; margin: 0 auto;" />
-  
+
 ## About
 
 TextAttack is a Python framework for adversarial attacks, data augmentation, and model training in NLP.
@@ -46,7 +46,11 @@ There are lots of reasons to use TextAttack:
 You should be running Python 3.6+ to use this package. A CUDA-compatible GPU is optional but will greatly improve code speed. TextAttack is available through pip:
 
 ```bash
-pip install textattack
+pip install textattack tensorflow
+pip install --force-reinstall textattack
+pip install tensorflow
+pip install tensorflow-text
+
 ```
 
 Once TextAttack is installed, you can run it via command-line (`textattack ...`)
@@ -597,5 +601,4 @@ If you use TextAttack for your research, please cite [TextAttack: A Framework fo
   year={2020}
 }
 ```
-
 
