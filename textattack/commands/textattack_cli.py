@@ -9,6 +9,13 @@ TextAttack CLI main class
 # !/usr/bin/env python
 import argparse
 
+import sys, os
+temp = os.path.abspath(__file__) # /content/TextAttack/textattack/commands/textattack_cli.py
+print('run', temp)
+temp = os.path.dirname(os.path.dirname(os.path.dirname(temp)))
+sys.path.append(temp)
+print('add path', temp)
+
 from textattack.commands.attack_command import AttackCommand
 from textattack.commands.attack_resume_command import AttackResumeCommand
 from textattack.commands.augment_command import AugmentCommand
