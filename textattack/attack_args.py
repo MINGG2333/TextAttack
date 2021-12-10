@@ -478,6 +478,7 @@ class _CommandLineAttackArgs:
     constraints: list = field(default_factory=lambda: ["repeat", "stopword"])
     goal_function: str = "untargeted-classification"
     search_method: str = "greedy-word-wir"
+    attention_model: str = None
     attack_recipe: str = None
     attack_from_file: str = None
     interactive: bool = False
