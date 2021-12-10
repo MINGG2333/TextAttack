@@ -1,13 +1,20 @@
+import sys, os
+temp = os.path.abspath(__file__) # /content/TextAttack/textattack/commands/textattack_cli.py
+print('run', temp)
+temp = (os.path.dirname(os.path.dirname(temp)))
+sys.path.append(temp)
+print('add path', temp)
+
 # Import the dataset
 from textattack.datasets import HuggingFaceDataset
-dataset = HuggingFaceDataset("ag_news", None, "test")
+dataset = HuggingFaceDataset("imdb", None, "test")
 print(dataset[0])
 
 # Import the model
 import transformers
 from textattack.models.wrappers import HuggingFaceModelWrapper
-model = transformers.AutoModelForSequenceClassification.from_pretrained("textattack/bert-base-uncased-ag-news")
-tokenizer = transformers.AutoTokenizer.from_pretrained("textattack/bert-base-uncased-ag-news")
+model = transformers.AutoModelForSequenceClassification.from_pretrained("textattack/bert-base-uncased-imdb")
+tokenizer = transformers.AutoTokenizer.from_pretrained("textattack/bert-base-uncased-imdb")
 model_wrapper = HuggingFaceModelWrapper(model, tokenizer)
 
 # Import the Attack
@@ -32,7 +39,7 @@ model_wrapper = HuggingFaceModelWrapper(model, tokenizer)
 from textattack.attack_recipes import LSHWithAttentionWordNet
 attack = LSHWithAttentionWordNet.build(
     model_wrapper,
-    attention_model='attention_models/yelp/han_model_yelp'
+    attention_model='query-attack/attention_models/yelp/han_model_yelp'
 )
 # print(attack)
 
