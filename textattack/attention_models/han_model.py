@@ -232,7 +232,7 @@ class WordAttention(nn.Module):
         """
 
         # Get word embeddings, apply dropout
-        sentences=sentences.to(device=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
+        # sentences=sentences.to(device=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
         sentences = self.dropout(self.embeddings(sentences))  # (n_sentences, word_pad_len, emb_size)
 
         # Re-arrange as words by removing word-pads (SENTENCES -> WORDS)
